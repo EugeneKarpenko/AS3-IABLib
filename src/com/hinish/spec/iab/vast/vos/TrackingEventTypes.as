@@ -15,10 +15,15 @@ package com.hinish.spec.iab.vast.vos
         public static const REWIND:String = "rewind";
         public static const RESUME:String = "resume";
         public static const FULLSCREEN:String = "fullscreen";
+        public static const EXIT_FULLSCREEN:String = "exitFullscreen";
         public static const EXPAND:String = "expand";
         public static const COLLAPSE:String = "collapse";
         public static const ACCEPT_INVITATION:String = "acceptInvitation";
+        public static const ACCEPT_INVITATION_LINEAR:String = "acceptInvitationLinear";
         public static const CLOSE:String = "close";
+        public static const CLOSE_LINEAR:String = "closeLinear";
+        public static const SKIP:String = "skip";
+        public static const PROGRESS:String = "progress";
 
         public static function isValidTrackingEventType(key:String):Boolean
         {
@@ -36,10 +41,15 @@ package com.hinish.spec.iab.vast.vos
                 case REWIND:
                 case RESUME:
                 case FULLSCREEN:
+                case EXIT_FULLSCREEN:
                 case EXPAND:
                 case COLLAPSE:
                 case ACCEPT_INVITATION:
+                case ACCEPT_INVITATION_LINEAR:
                 case CLOSE:
+                case CLOSE_LINEAR:
+                case SKIP:
+                case PROGRESS:
                     return true;
                 default:
                     return false;

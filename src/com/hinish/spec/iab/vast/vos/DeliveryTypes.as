@@ -5,6 +5,7 @@ package com.hinish.spec.iab.vast.vos
     {
         public static const PROGRESSIVE:String = "progressive";
         public static const STREAMING:String = "streaming";
+        public static const VPAID:String = "";
 
         public static function isValidDeliveryType(key:String):Boolean
         {
@@ -12,6 +13,7 @@ package com.hinish.spec.iab.vast.vos
             {
                 case PROGRESSIVE:
                 case STREAMING:
+                case VPAID:
                     return true;
                 default:
                     return false;

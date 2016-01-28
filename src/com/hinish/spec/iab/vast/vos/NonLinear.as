@@ -48,8 +48,12 @@ package com.hinish.spec.iab.vast.vos
          * on the the non-linear ad unit.
          */
         public var clickThrough:String;
-        
-        
 
+
+        /**
+         * URL to track when user clicks
+         * on the the non-linear ad unit.
+         */
+        public var clickTracking:String;
     }
 }

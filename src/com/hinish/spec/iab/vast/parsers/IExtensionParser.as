@@ -12,8 +12,7 @@ package com.hinish.spec.iab.vast.parsers
      */
     public interface IExtensionParser
     {
-        function setData(value:XML):void;
         function isNodeEligible(node:XML):Boolean;
-        function parse():IExtension;
+        function parse(raw:XML):IExtension;
     }
 }

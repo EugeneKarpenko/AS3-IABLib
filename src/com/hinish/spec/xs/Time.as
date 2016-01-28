@@ -12,6 +12,9 @@ package com.hinish.spec.xs
         public function Time(value:String)
         {
             var parts:Array = value.split(":");
+            if (parts.length < 3)
+                return;
+
             hours = uint(parts[0]);
             minutes = uint(parts[1]);
             parts = parts[2].split(".");
@@ -25,7 +28,9 @@ package com.hinish.spec.xs
 
         public function toString():String
         {
-            return (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds + "." + (milliseconds < 100 ? "0" : "") + (milliseconds < 10 ? "0" : "") + milliseconds;
+            return (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "")
+                    + minutes + ":" + (seconds < 10 ? "0" : "") + seconds + "."
+                    + (milliseconds < 100 ? "0" : "") + (milliseconds < 10 ? "0" : "") + milliseconds;
         }
     }
 }

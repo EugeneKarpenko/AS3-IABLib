@@ -7,8 +7,6 @@ package com.hinish.spec.iab.vast.parsers
     {
         private var _extensions:Vector.<IExtensionParser>;
 
-        private var _raw:XML;
-
         private var _output:VAST;
 
         public function VASTParser()
@@ -16,35 +14,25 @@ package com.hinish.spec.iab.vast.parsers
             _extensions = new Vector.<IExtensionParser>();
         }
 
-        public function setData(value:XML):void
-        {
-            _raw = value;
-        }
-
         public function registerExtensionParser(parser:IExtensionParser):void
         {
             _extensions.push(parser);
         }
 
-        public function parse():VAST
-        {
-            return parseVast();
-        }
-
-        private function parseVast():VAST
+        public function parse(raw:XML):VAST
         {
             _output = new VAST();
 
             // Can have 0 - INF <Ad>
-            var ads:XMLList = _raw.Ad, node:XML;
+            var ads:XMLList = raw.Ad, node:XML;
             for each (node in ads)
             {
                 _output.ads.push(parseAd(node));
             }
 
-            if (_raw.@version != undefined)
+            if (raw.@version != undefined)
             {
-                _output.version = _raw.@version;
+                _output.version = raw.@version;
             }
 
             return _output;
@@ -301,11 +289,10 @@ package com.hinish.spec.iab.vast.parsers
                     extParser = _extensions[i];
                 }
             }
+
             if (extParser)
-            {
-                extParser.setData(node);
-                ext = extParser.parse();
-            }
+                ext = extParser.parse(node);
+
             return ext;
         }
 
@@ -394,7 +381,7 @@ package com.hinish.spec.iab.vast.parsers
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.NonLinearAds.NonLinear
             ads.nonLinears = new Vector.<NonLinear>();
-            for each (child in node.NonLinearAds.NonLinear)
+            for each (child in node.NonLinear)
             {
                 ads.nonLinears.push(parseNonLinear(child));
             }
@@ -419,6 +406,9 @@ package com.hinish.spec.iab.vast.parsers
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.NonLinearAds.NonLinear.NonLinearClickThrough
             nl.clickThrough = String(node.NonLinearClickThrough);
+
+            // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.NonLinearAds.NonLinear.NonLinearClickTracking
+            nl.clickTracking = String(node.NonLinearClickTracking);
 
             return nl;
         }
