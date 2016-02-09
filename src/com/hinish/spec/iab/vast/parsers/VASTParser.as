@@ -304,7 +304,6 @@ package com.hinish.spec.iab.vast.parsers
             l.duration = new Time(node.Duration);
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.Linear.TrackingEvents.Tracking
-            l.trackingEvents = new Vector.<TrackingEvent>();
             for each (child in node.TrackingEvents.Tracking)
             {
                 l.trackingEvents.push(parseTrackingEvent(child));
@@ -319,7 +318,6 @@ package com.hinish.spec.iab.vast.parsers
                 l.videoClicks = parseVideoClicks(node.VideoClicks[0]);
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.Linear.MediaFiles.MediaFile
-            l.mediaFiles = new Vector.<MediaFile>();
             for each (child in node.MediaFiles.MediaFile)
             {
                 l.mediaFiles.push(parseMediaFile(child));
@@ -485,20 +483,15 @@ package com.hinish.spec.iab.vast.parsers
                 vc.clickThrough = parseURIIdentifier(node.ClickThrough[0]);
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.Linear.VideoClicks.ClickTracking
-            vc.clickTracking = new Vector.<URIIdentifier>();
             for each (child in node.ClickTracking)
             {
                 vc.clickTracking.push(parseURIIdentifier(child));
             }
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.Linear.VideoClicks.CustomClicks
-            if(node.CustomClick.length() > 0)
+            for each (child in node.CustomClick)
             {
-                vc.customClicks = new Vector.<URIIdentifier>();
-                for each (child in node.CustomClick)
-                {
-                    vc.customClicks.push(parseURIIdentifier(child));
-                }
+                vc.customClicks.push(parseURIIdentifier(child));
             }
 
             return vc;

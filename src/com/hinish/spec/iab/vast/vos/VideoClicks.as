@@ -10,11 +10,11 @@ package com.hinish.spec.iab.vast.vos
         /**
         * URLs to request for tracking purposes when user clicks on the video.
         */
-        public var clickTracking:Vector.<URIIdentifier>;
+        public var clickTracking:Vector.<URIIdentifier> = new <URIIdentifier>[];
         
         /**
         * URLs to request on custom events such as hotspotted video
         */
-        public var customClicks:Vector.<URIIdentifier>;
+        public var customClicks:Vector.<URIIdentifier> = new <URIIdentifier>[];
     }
 }

@@ -5,9 +5,9 @@ package com.hinish.spec.iab.vast.vos
     public class Linear 
     {
         public var duration:Time;
-        public var trackingEvents:Vector.<TrackingEvent>;
+        public var trackingEvents:Vector.<TrackingEvent> = new <TrackingEvent>[];
         public var adParameters:String;
-        public var videoClicks:VideoClicks;
-        public var mediaFiles:Vector.<MediaFile>;
+        public var videoClicks:VideoClicks = new VideoClicks();
+        public var mediaFiles:Vector.<MediaFile> = new <MediaFile>[];
     }
 }
