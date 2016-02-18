@@ -26,7 +26,7 @@ package com.hinish.spec.iab.vast.vos
         /**
          * URL to request if ad does not play due to error
          */
-        public var error:String;
+        public var error:Vector.<String>;
         
         public var extensions:Vector.<IExtension>;
 

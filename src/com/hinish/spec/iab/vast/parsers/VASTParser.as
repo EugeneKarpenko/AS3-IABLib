@@ -69,7 +69,11 @@ package com.hinish.spec.iab.vast.parsers
             }
 
             // Test node: VAST.Ad.(InLine|Wrapper).Error
-            ad.error = innerNode.Error;
+            ad.error = new Vector.<String>();
+            for each (child in innerNode.Error)
+            {
+                ad.error.push(child);
+            }
 
             // Test node: VAST.Ad.(InLine|Wrapper).Extensions.Extension
             ad.extensions = new Vector.<IExtension>();
