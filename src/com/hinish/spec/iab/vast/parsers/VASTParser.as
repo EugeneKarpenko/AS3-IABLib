@@ -5,13 +5,14 @@ package com.hinish.spec.iab.vast.parsers
 
     public class VASTParser
     {
-        private var _extensions:Vector.<IExtensionParser>;
+        private var _extensions:Vector.<IExtensionParser> = new <IExtensionParser>[];
 
         private var _output:VAST;
 
-        public function VASTParser()
+        public function VASTParser(extensions:Vector.<IExtensionParser> = null)
         {
-            _extensions = new Vector.<IExtensionParser>();
+            if (extensions)
+                _extensions = extensions;
         }
 
         public function registerExtensionParser(parser:IExtensionParser):void
@@ -108,10 +109,25 @@ package com.hinish.spec.iab.vast.parsers
             if (node.Survey.length() > 0)
                 i.survey = String(node.Survey[0]);
 
+            // Test node: VAST.Ad.InLine.Pricing
+            if (node.Pricing.length() > 0)
+                i.pricing = parsePricing(node.Pricing[0]);
+
             // Test node: VAST.Ad.InLine.AdTitle
             i.title = String(node.AdTitle);
 
             return i;
+        }
+
+        private function parsePricing(node:XML):Pricing
+        {
+            var p:Pricing = new Pricing();
+
+            p.currency = node.@currency;
+            p.model = node.@model;
+            p.value = Number(node);
+
+            return p;
         }
 
         private function parseWrapper(node:XML):Wrapper

@@ -2,9 +2,9 @@ package com.hinish.spec.iab.vast.vos
 {
     public class PricingModels
     {
-        public static const CPC:String = "cpc";
-        public static const CPE:String = "cpe";
-        public static const CPM:String = "cpm";
-        public static const CPV:String = "cpv";
+        public static const CPC:String = "CPC";
+        public static const CPE:String = "CPE";
+        public static const CPM:String = "CPM";
+        public static const CPV:String = "CPV";
     }
 }

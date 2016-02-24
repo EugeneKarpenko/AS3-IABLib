@@ -14,7 +14,8 @@ package com.hinish.spec.iab.vast.vos
         public var model:String;
         
         /**
-         * The currency of the pricing.
+         * the 3-letter ISO-4217 currency symbol that identifies the currency of the value
+         * provided (i.e. USD, GBP, etc.…)
          */
         public var currency:String;
     }
