@@ -198,6 +198,7 @@ package com.hinish.spec.iab.vast.parsers
         {
             var c:CompanionAds = new CompanionAds(), child:XML;
             c.companions = new Vector.<Companion>();
+            c.rawCompanions = node;
 
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.CompanionAds.Companion
             for each (child in node.Companion)
