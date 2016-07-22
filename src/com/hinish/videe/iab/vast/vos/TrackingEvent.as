@@ -24,14 +24,10 @@ package com.hinish.videe.iab.vast.vos
 
         public function set event(value:String):void
         {
-            if(TrackingEventTypes.isValidTrackingEventType(value))
-            {
-               _event = value;
-            }
-            else
-            {
-                throw new Error(INVALID_EVENT_TYPE_ERROR_MESSAGE);
-            }
+            _event = value;
+
+//            if (!TrackingEventTypes.isValidTrackingEventType(value))
+//                throw new Error(INVALID_EVENT_TYPE_ERROR_MESSAGE);
         }
 
     }

@@ -21,16 +21,11 @@ package com.hinish.videe.iab.vast.vos
         public function set delivery(value:String):void
         {
             value = value.toLowerCase();
-            if(DeliveryTypes.isValidDeliveryType(value))
-            {
-                _delivery = value;
-            }
-            else
-            {
-                throw new Error(INVALID_DELIVERY_TYPE_ERROR_MESSAGE);
-            }
-        }
+            _delivery = value;
 
+//            if (!DeliveryTypes.isValidDeliveryType(value))
+//                throw new Error(INVALID_DELIVERY_TYPE_ERROR_MESSAGE);
+        }
         
         /**
          * Required

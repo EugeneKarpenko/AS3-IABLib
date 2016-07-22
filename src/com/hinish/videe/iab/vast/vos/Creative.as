@@ -62,14 +62,10 @@ package com.hinish.videe.iab.vast.vos
          */
         public function set type(value:String):void
         {
-            if (CreativeTypes.isValidCreativeType(value))
-            {
-                _type = value;
-            }
-            else
-            {
-                throw new Error(INVALID_CREATIVE_TYPE_ERROR_MESSAGE);
-            }
+            _type = value;
+
+//            if (!CreativeTypes.isValidCreativeType(value))
+//                throw new Error(INVALID_CREATIVE_TYPE_ERROR_MESSAGE);
         }
 
     }
