@@ -144,6 +144,9 @@ public class VASTParser
         {
             var sys:AdSystem = new AdSystem();
 
+            if (!node)
+                return sys;
+
             // Test node: VAST.Ad.(InLine|Wrapper).AdSystem.@version
             if (node.@version != undefined)
                 sys.version = node.@version;
