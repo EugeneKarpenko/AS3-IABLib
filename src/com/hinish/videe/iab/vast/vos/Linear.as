@@ -4,6 +4,7 @@ package com.hinish.videe.iab.vast.vos
 
     public class Linear 
     {
+        public var skipoffset:Time;
         public var duration:Time;
         public var trackingEvents:Vector.<TrackingEvent> = new <TrackingEvent>[];
         public var adParameters:String;

@@ -324,6 +324,10 @@ public class VASTParser
         {
             var l:Linear = new Linear(), child:XML;
 
+            // Test node: (*).@skipoffset
+            if (node.@skipoffset != undefined)
+                l.skipoffset = new Time(node.@skipoffset);
+
             // Test node: VAST.Ad.(InLine|Wrapper).Creatives.Creative.Linear.Duration
             l.duration = new Time(node.Duration);
 
